@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditor.UI", "UnityEdit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.UI", "UnityEngine.UI.csproj", "{6A43F422-39DE-232C-F838-5C0193F422AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{A13BD981-4482-B49B-F938-0110C82B45BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{6A43F422-39DE-232C-F838-5C0193F422AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A43F422-39DE-232C-F838-5C0193F422AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A43F422-39DE-232C-F838-5C0193F422AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A13BD981-4482-B49B-F938-0110C82B45BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A13BD981-4482-B49B-F938-0110C82B45BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A13BD981-4482-B49B-F938-0110C82B45BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A13BD981-4482-B49B-F938-0110C82B45BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
