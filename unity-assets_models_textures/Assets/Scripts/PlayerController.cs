@@ -12,10 +12,16 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private float horizontal;
     private Rigidbody rb;
+
+    private float minAltitude = -30f;
+    private Vector3 reinitPosition;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        reinitPosition = transform.position;
+        reinitPosition.y = -minAltitude;
+
     }
 
     // Update is called once per frame
@@ -33,6 +39,11 @@ public class PlayerController : MonoBehaviour
         if (jump)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+        }
+
+        if (transform.position.y < minAltitude)
+        {
+            transform.position = reinitPosition;
         }
     }
 }
