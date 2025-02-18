@@ -168,9 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Changa-SemiBold
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -308863816
   material: {fileID: -8484750697195638106}
-  materialHashCode: 0
+  materialHashCode: 2141788056
   m_Version: 1.1.0
   m_SourceFontFileGUID: d70131637cc652045a156da76eea7b61
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: d70131637cc652045a156da76eea7b61, type: 3}
@@ -2762,7 +2762,7 @@ MonoBehaviour:
   m_FallbackFontAssetTable: []
   m_CreationSettings:
     sourceFontFileName: 
-    sourceFontFileGUID: d70131637cc652045a156da76eea7b61
+    sourceFontFileGUID: 29bc0489cd8f9c14bacd97bf8ecd2b56
     pointSizeSamplingMode: 0
     pointSize: 76
     padding: 5

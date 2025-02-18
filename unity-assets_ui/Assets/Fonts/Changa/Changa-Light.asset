@@ -2622,7 +2622,7 @@ MonoBehaviour:
   m_FallbackFontAssetTable: []
   m_CreationSettings:
     sourceFontFileName: 
-    sourceFontFileGUID: 8bd7c7d5c38086648a8b9a4932ac25e5
+    sourceFontFileGUID: c1bf7e1d58e9bb04b961d5c5f63830ea
     pointSizeSamplingMode: 0
     pointSize: 80
     padding: 5

@@ -168,9 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Changa-ExtraLight
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -194616629
   material: {fileID: -5013925995334222756}
-  materialHashCode: 0
+  materialHashCode: 1232323339
   m_Version: 1.1.0
   m_SourceFontFileGUID: 4658345feae72ac439d6d47909424667
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 4658345feae72ac439d6d47909424667, type: 3}
@@ -2766,7 +2766,7 @@ MonoBehaviour:
   m_FallbackFontAssetTable: []
   m_CreationSettings:
     sourceFontFileName: 
-    sourceFontFileGUID: 4658345feae72ac439d6d47909424667
+    sourceFontFileGUID: 4a2bcfc9b5d9e16478462d05114d33ce
     pointSizeSamplingMode: 0
     pointSize: 82
     padding: 5
