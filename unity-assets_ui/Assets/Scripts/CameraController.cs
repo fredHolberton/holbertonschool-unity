@@ -24,6 +24,7 @@ public class CameraController : MonoBehaviour
         // Initialiser l'angle que fait la camera avec le player
         currentAngleY = transform.eulerAngles.y;
         currentAngleX = transform.eulerAngles.x;
+        isInverted = GameplayController.isInverted;
     }
     private void LateUpdate()
     {

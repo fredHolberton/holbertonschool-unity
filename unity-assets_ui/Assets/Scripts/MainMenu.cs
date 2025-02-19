@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
+        GameplayController.previousSceneName = SceneManager.GetActiveScene().name; 
         SceneManager.LoadScene("Options");
     }
 
