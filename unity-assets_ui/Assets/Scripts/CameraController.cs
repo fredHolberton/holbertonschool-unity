@@ -8,10 +8,14 @@ public class CameraController : MonoBehaviour
     public Transform player;      // L'objet à suivre
     public float rotationSpeed = 3f;
 
+    public bool isInverted;
+
     private float currentAngleY = 0f; // L'angle actuel de la caméra autour de l'objet selon l'axe y
     private float currentAngleX = 0f; // L'angle actuel de la caméra autour de l'objet selon l'axe x
     private bool isMousePressed = false; // Pour savoir si la souris est cliquée
     private Vector3 offset;        // Décalage entre la caméra et l'objet
+
+    RaycastHit hit = new RaycastHit();
 
     void Start()
     {
@@ -47,13 +51,15 @@ public class CameraController : MonoBehaviour
         if (isMousePressed)
         {
             float mouseX = Input.GetAxis("Mouse X") * rotationSpeed;
-            float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed;
+            float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * (isInverted? -1 : 1);
             currentAngleY += mouseX;
             currentAngleX += mouseY;
 
             // Clamp the pitch to prevent flipping
             currentAngleX = Mathf.Clamp(currentAngleX, -90f, 90f);
-        }       
+            currentAngleY = Mathf.Clamp(currentAngleY,-180f, 180f);
+            Debug.Log("currentAngleX =" + currentAngleX);
+        }
     }
 
     // Fonction pour suivre l'objet sans rotation de la caméra
