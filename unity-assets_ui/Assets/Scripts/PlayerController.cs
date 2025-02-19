@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         reinitPosition = transform.position;
         reinitPosition.y = -minAltitude;
+        Time.timeScale = 1;
 
     }
 
