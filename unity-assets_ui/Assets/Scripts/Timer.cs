@@ -5,6 +5,7 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI finalTime;
 
     private float timer;    // Variable pour compter le temps
     private int minutes;    // Minutes du timer
@@ -31,5 +32,12 @@ public class Timer : MonoBehaviour
 
         // Mettre à jour le texte avec le format "M:SS:CS"
         timerText.text = string.Format("{0:0}:{1:00}:{2:00}", minutes, seconds, centiseconds);
+    }
+
+    public void Win()
+    {
+        finalTime.text = string.Format("{0:0}:{1:00}.{2:00}", minutes, seconds, centiseconds);
+        timerText.enabled = false;
+;
     }
 }

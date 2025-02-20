@@ -59,7 +59,6 @@ public class CameraController : MonoBehaviour
             // Clamp the pitch to prevent flipping
             currentAngleX = Mathf.Clamp(currentAngleX, -90f, 90f);
             currentAngleY = Mathf.Clamp(currentAngleY,-180f, 180f);
-            Debug.Log("currentAngleX =" + currentAngleX);
         }
     }
 
