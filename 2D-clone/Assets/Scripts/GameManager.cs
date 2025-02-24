@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         int index = UnityEngine.Random.Range(0, tetrominos.Length);
         Debug.Log(tetrominos[index].name);
-        currentTetromino = Instantiate(tetrominos[index], new Vector3(5, 19, 0), Quaternion.identity);
+        currentTetromino = Instantiate(tetrominos[index], new Vector3(5, 18, 0), Quaternion.identity);
     }
 
     // Managment of the movments of current tetromino
@@ -76,15 +76,25 @@ public class GameManager : MonoBehaviour
                 currentTetromino.transform.Rotate(0, 0, -90);
             }
         }
-    }
-
-    void CheckForLines()
-    {
-        // TODO: Implement later
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            movmentFrequency = 0.2f;
+        }
+        else
+        {
+             movmentFrequency = 0.8f;
+        }
     }
 
     bool IsValidPosition()
     {
         return GetComponent<GridController>().IsValidPosition(currentTetromino.transform);
     }
+    
+    void CheckForLines()
+    {
+        GetComponent<GridController>().CheckForLines();
+    }
+
+    
 }

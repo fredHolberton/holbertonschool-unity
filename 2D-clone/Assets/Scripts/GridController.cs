@@ -108,4 +108,54 @@ public class GridController : MonoBehaviour
     {
         return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));
     }
+
+    public void CheckForLines()
+    {
+        for (int y = 0; y < height; y++)
+        {
+            if (LineIsFull(y))
+            {
+                DeleteLine(y);
+                DecreaseRowAbove(y + 1);
+                y--;
+            }
+        }
+    }
+
+    bool LineIsFull(int y)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            if (grid[x, y] == null)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void DeleteLine(int y)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            Destroy(grid[x, y].gameObject);
+            grid[x, y] = null;
+        }
+    }
+
+    void DecreaseRowAbove(int startRow)
+    {
+        for (int y = startRow; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    grid[x, y - 1] = grid[x, y];
+                    grid[x, y] = null;
+                    grid[x, y - 1].position += Vector3.down;
+                }
+            }
+        }
+    }
 }
