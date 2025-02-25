@@ -141,6 +141,8 @@ public class GridController : MonoBehaviour
             Destroy(grid[x, y].gameObject);
             grid[x, y] = null;
         }
+        // add a new line to the GameController script
+        GetComponent<GameController>().AddALine();
     }
 
     void DecreaseRowAbove(int startRow)

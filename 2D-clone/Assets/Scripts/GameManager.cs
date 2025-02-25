@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject[] tetrominos;
     public float movmentFrequency = 0.8f;
+
     private float passedTime = 0;
     private GameObject currentTetromino;
 
