@@ -14,13 +14,18 @@ public class GridController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Transform[width, height];
+        InitGame();
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Initialize the grid for a new player
+    /// </summary>
+    public void InitGame()
     {
-        
+        if (grid == null)
+            grid = new Transform[width, height];
+        else
+            DeleteGrid();
     }
 
     /// <summary>
@@ -118,6 +123,8 @@ public class GridController : MonoBehaviour
                 DeleteLine(y);
                 DecreaseRowAbove(y + 1);
                 y--;
+                // add a new line to the GameController script
+                GetComponent<GameController>().AddALine();
             }
         }
     }
@@ -141,8 +148,6 @@ public class GridController : MonoBehaviour
             Destroy(grid[x, y].gameObject);
             grid[x, y] = null;
         }
-        // add a new line to the GameController script
-        GetComponent<GameController>().AddALine();
     }
 
     void DecreaseRowAbove(int startRow)
@@ -156,6 +161,22 @@ public class GridController : MonoBehaviour
                     grid[x, y - 1] = grid[x, y];
                     grid[x, y] = null;
                     grid[x, y - 1].position += Vector3.down;
+                }
+            }
+        }
+    }
+
+    void DeleteGrid()
+    {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    Debug.Log("Objet détruit : " + grid[x, y].gameObject.name);
+                    Destroy(grid[x, y].gameObject);
+                    grid[x, y] = null;
                 }
             }
         }

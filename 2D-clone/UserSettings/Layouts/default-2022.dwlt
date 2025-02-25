@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 108
+  controlID: 46
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -340,7 +340,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 22}
     m_SelectedIDs: 9a790000
     m_LastClickedID: 31130
-    m_ExpandedIDs: 00000000786200007a6200007c6200007e620000
+    m_ExpandedIDs: 000000000c6400000e64000010640000126400001464000016640000186400001a640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -368,21 +368,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 462}
     m_SelectedIDs: e8bdffff
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff0000000006610000786200007a6200007c6200007e6200005a6b00006e6b000052700000
+    m_ExpandedIDs: 000000000c6400000e64000010640000126400001464000016640000186400001a640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: GameController
-      m_OriginalName: GameController
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 29776
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -508,9 +508,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 8e610000
-      m_LastClickedID: 24974
-      m_ExpandedIDs: 8a8affff78a4fffffab2ffff62b3fffff6b5ffffe8bdffffd4c0ffff1cc1ffffdac8fffff6faffff
+      m_SelectedIDs: 78eaffff
+      m_LastClickedID: -5512
+      m_ExpandedIDs: d4faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

@@ -63,7 +63,6 @@ public class GameController : MonoBehaviour
             title[0].color = Color.white;
     }
 
-
     public void ChangeGamer()
     {
         // Desactivate the GameManager script
@@ -84,6 +83,7 @@ public class GameController : MonoBehaviour
         InitPlayers();
 
         // Activate the GameManager script
+        gameObject.GetComponent<GameManager>().InitGame();
         gameObject.GetComponent<GameManager>().enabled = true;
     }
 

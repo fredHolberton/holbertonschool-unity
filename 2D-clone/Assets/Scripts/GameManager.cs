@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnTetromino();
+        InitGame();
     }
 
     // Update is called once per frame
@@ -32,12 +32,22 @@ public class GameManager : MonoBehaviour
         UserInput();
     }
 
+    public void InitGame()
+    {
+        GetComponent<GridController>().InitGame();
+        SpawnTetromino();
+    }
+
     // Random generation and instantiation of a new tetromino
     void SpawnTetromino()
     {
         int index = UnityEngine.Random.Range(0, tetrominos.Length);
-        Debug.Log(tetrominos[index].name);
-        currentTetromino = Instantiate(tetrominos[index], new Vector3(5, 18, 0), Quaternion.identity);
+        currentTetromino = Instantiate(tetrominos[index], new Vector3(4, 18, 0), Quaternion.identity);
+        if (!IsValidPosition())
+        {
+            Destroy(currentTetromino);
+            GetComponent<GameController>().ChangeGamer();
+        }
     }
 
     // Managment of the movments of current tetromino
