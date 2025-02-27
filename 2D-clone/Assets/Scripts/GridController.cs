@@ -8,7 +8,14 @@ using UnityEngine;
 /// </summary>
 public class GridController : MonoBehaviour
 {
+    /// <summary>
+    /// 2-dimensional array in which the tetrominos will be stored 
+    /// </summary>
     public Transform[,] grid;
+    
+    /// <summary>
+    /// Number of rows and columns int the array
+    /// </summary>
     public int width, height;
 
     // Start is called before the first frame update
@@ -62,7 +69,7 @@ public class GridController : MonoBehaviour
     /// Return the transform of a tetromino at his position
     /// </summary>
     /// <param name="pos"></param>
-    /// <returns></returns>
+    /// <returns>Transform</returns>
     public Transform GetTransformAtGridPosition(Vector2 pos)
     {
         if (pos.y > height - 1)
@@ -76,7 +83,7 @@ public class GridController : MonoBehaviour
     /// Returns true if the tetromino is inside the grid limits, otherwise returns false
     /// </summary>
     /// <param name="pos"></param>
-    /// <returns></returns>
+    /// <returns>bool</returns>
     public bool IsInsideBorder(Vector2 pos)
     {
         return (int)pos.x >= 0 && (int)pos.x < width && (int)pos.y >= 0 && (int)pos.y < height;
@@ -86,7 +93,7 @@ public class GridController : MonoBehaviour
     /// Return true if the position of the tetromino is valid, otherwise return false
     /// </summary>
     /// <param name="tetromino"></param>
-    /// <returns></returns>
+    /// <returns>bool</returns>
     public bool IsValidPosition(Transform tetromino)
     {
         foreach (Transform mino in tetromino)
@@ -108,7 +115,7 @@ public class GridController : MonoBehaviour
     /// Round the position x and y of a mino
     /// </summary>
     /// <param name="v"></param>
-    /// <returns></returns>
+    /// <returns>Vector2</returns>
     public static Vector2 Round(Vector2 v)
     {
         return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));

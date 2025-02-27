@@ -195,7 +195,7 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// Compute the frequency corresponding to the current player level
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Float</returns>
     public float GetFrequency()
     {
         return (float)(1.1 - (levelPlayer[currentPlayer] * 0.1));

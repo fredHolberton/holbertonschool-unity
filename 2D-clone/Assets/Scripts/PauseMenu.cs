@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class PauseMenu : MonoBehaviour
 {
+    /* Boolean : true if the game is on pause */
     private bool isOnPause;
     // Start is called before the first frame update
     void Start()

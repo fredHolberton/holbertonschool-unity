@@ -8,7 +8,14 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    /// <summary>
+    /// Array of tetrominos
+    /// </summary>
     public GameObject[] tetrominos;
+    
+    /// <summary>
+    /// Frequency for the movment of a tetromino
+    /// </summary>
     public float movmentFrequency;
 
     private float passedTime = 0;

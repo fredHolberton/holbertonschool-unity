@@ -10,12 +10,15 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class LeaderScoreManagment : MonoBehaviour
 {
+    /// <summary>
+    /// Array of best score values
+    /// </summary>
     public TextMeshProUGUI[] bestScoreValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Loading the best scores
+        // Loading the best scores from Player Prefs
         if (PlayerPrefs.HasKey("BestScorePlayer1"))
         {
             bestScoreValue[0].text = string.Format("{0}", PlayerPrefs.GetInt("BestScorePlayer1"));
