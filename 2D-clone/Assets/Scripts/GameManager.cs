@@ -9,7 +9,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] tetrominos;
-    public float movmentFrequency = 0.8f;
+    public float movmentFrequency;
 
     private float passedTime = 0;
     private GameObject currentTetromino;
@@ -32,13 +32,7 @@ public class GameManager : MonoBehaviour
         UserInput();
     }
 
-    public void InitGame()
-    {
-        GetComponent<GridController>().InitGame();
-        SpawnTetromino();
-    }
-
-    // Random generation and instantiation of a new tetromino
+    /* Random generation and instantiation of a new tetromino */
     void SpawnTetromino()
     {
         int index = UnityEngine.Random.Range(0, tetrominos.Length);
@@ -46,11 +40,11 @@ public class GameManager : MonoBehaviour
         if (!IsValidPosition())
         {
             Destroy(currentTetromino);
-            GetComponent<GameController>().ChangeGamer();
+            GetComponent<GameController>().GameOver();
         }
     }
 
-    // Managment of the movments of current tetromino
+    /* Managment of the movments of current tetromino */
     void MoveTetromino(Vector3 direction)
     {
         currentTetromino.transform.position += direction;
@@ -67,13 +61,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /* Listen the player inputs */
     void UserInput()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Debug.Log("Current position: " + currentTetromino.transform.position.x + ", " + currentTetromino.transform.position.y);
             MoveTetromino(Vector3.left);
-            Debug.Log("Current position: " + currentTetromino.transform.position.x + ", " + currentTetromino.transform.position.y);
         } 
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -89,23 +82,32 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            movmentFrequency = 0.2f;
+            movmentFrequency = 0.1f;
         }
         else
         {
-             movmentFrequency = 0.8f;
+             movmentFrequency = GetComponent<GameController>().GetFrequency();
         }
     }
 
+    /* return true if the new position of the current tetromino is valid */
     bool IsValidPosition()
     {
         return GetComponent<GridController>().IsValidPosition(currentTetromino.transform);
     }
     
+    /* Check if there are any full lines */
     void CheckForLines()
     {
         GetComponent<GridController>().CheckForLines();
     }
 
-    
+    /// <summary>
+    /// Initialise the game at start for a player
+    /// </summary>
+    public void InitGame()
+    {
+        GetComponent<GridController>().InitGame();
+        SpawnTetromino();
+    }    
 }

@@ -114,6 +114,9 @@ public class GridController : MonoBehaviour
         return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));
     }
 
+    /// <summary>
+    /// Verify id there are full lines in the grid
+    /// </summary>
     public void CheckForLines()
     {
         for (int y = 0; y < height; y++)
@@ -129,6 +132,7 @@ public class GridController : MonoBehaviour
         }
     }
 
+    /* return true if the y line is full */
     bool LineIsFull(int y)
     {
         for (int x = 0; x < width; x++)
@@ -141,6 +145,7 @@ public class GridController : MonoBehaviour
         return true;
     }
 
+    /* Destroy all gameObjects of the y line */
     void DeleteLine(int y)
     {
         for (int x = 0; x < width; x++)
@@ -150,6 +155,7 @@ public class GridController : MonoBehaviour
         }
     }
 
+    /* Decrease all GameObject of the line up of the deleted line */
     void DecreaseRowAbove(int startRow)
     {
         for (int y = startRow; y < height; y++)
@@ -166,6 +172,7 @@ public class GridController : MonoBehaviour
         }
     }
 
+    /* Delete all gameobjects of the grid */
     void DeleteGrid()
     {
         for (int y = 0; y < height; y++)
@@ -174,7 +181,6 @@ public class GridController : MonoBehaviour
             {
                 if (grid[x, y] != null)
                 {
-                    Debug.Log("Objet détruit : " + grid[x, y].gameObject.name);
                     Destroy(grid[x, y].gameObject);
                     grid[x, y] = null;
                 }
