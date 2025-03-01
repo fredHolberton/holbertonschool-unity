@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     public GameObject[] tetrominos;
     
     /// <summary>
+    /// Parent of instantiated tetrominos
+    /// </summary>
+    public Transform parentTetrominos;
+    
+    /// <summary>
     /// Frequency for the movment of a tetromino
     /// </summary>
     public float movmentFrequency;
@@ -44,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         int index = UnityEngine.Random.Range(0, tetrominos.Length);
         currentTetromino = Instantiate(tetrominos[index], new Vector3(4, 18, 0), Quaternion.identity);
+        currentTetromino.transform.parent =  GameObject.Find("ParentGameTetrominos").transform;
         if (!IsValidPosition())
         {
             Destroy(currentTetromino);

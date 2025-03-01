@@ -18,6 +18,11 @@ public class GridController : MonoBehaviour
     /// </summary>
     public int width, height;
 
+    /// <summary>
+    /// Parent of instantiated tetrominos
+    /// </summary>
+    public Transform parentTetrominos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -193,5 +198,11 @@ public class GridController : MonoBehaviour
                 }
             }
         }
+
+        foreach(Transform child in parentTetrominos.transform)
+        {
+            Destroy (child.gameObject);
+        }
     }
+
 }
