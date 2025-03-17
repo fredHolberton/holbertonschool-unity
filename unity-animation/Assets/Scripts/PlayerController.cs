@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private float horizontal;
     private Rigidbody rb;
+    //private Animator anim;
 
     private float minAltitude = -30f;
     private Vector3 reinitPosition;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
         reinitPosition = transform.position;
         reinitPosition.y = -minAltitude;
         Time.timeScale = 1;
+        //anim = GetComponent<Animator>();
 
     }
 
@@ -55,10 +57,13 @@ public class PlayerController : MonoBehaviour
             moveDirection.Normalize();
 
             rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
+
+            //anim.SetBool("IsRunning", true);
         }
         else
         {
             rb.velocity = new Vector3(0, rb.velocity.y, 0); // Stop horizontal movement when no input
+            //anim.SetBool("IsRunning", false);
         }
     }
 
