@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         reinitPosition = transform.position;
         reinitPosition.y = -minAltitude;
         Time.timeScale = 1;
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
 
     }
 
@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         if (saut && Physics.Raycast(transform.position, Vector3.down , 2f, layerGround))
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            anim.SetTrigger("Jump");
         }
     }
 
