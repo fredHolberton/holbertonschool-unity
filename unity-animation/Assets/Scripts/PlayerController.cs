@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         if (saut && Physics.Raycast(transform.position, Vector3.down , 2f, layerGround))
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-            anim.SetTrigger("Jump");
+            anim.SetBool("IsJumping", true);
         }
     }
 
@@ -59,12 +59,12 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
 
-            anim.SetBool("IsRunning", true);
+            anim.SetBool("IsMoving", true);
         }
         else
         {
             rb.velocity = new Vector3(0, rb.velocity.y, 0); // Stop horizontal movement when no input
-            anim.SetBool("IsRunning", false);
+            anim.SetBool("IsMoving", false);
         }
     }
 
@@ -74,6 +74,12 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = reinitPosition;
         }
+    }
+
+    public void StopJumping()
+    {
+        anim.SetBool("IsJumping", false);
+        Debug.Log("IsJumping = " + anim.GetBool("IsJumping"));
     }
 
 }
