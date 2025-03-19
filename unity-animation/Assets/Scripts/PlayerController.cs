@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
     private void Falling()
     {
-        if ((transform.position.y < minAltitude) && !anim.GetBool("IsFalling"))
+        if ((rb.velocity.y < -6) && !anim.GetBool("IsFalling"))
         {
             Debug.Log("transform.position.y = " + transform.position.y);
             anim.SetBool("IsFalling", true);
