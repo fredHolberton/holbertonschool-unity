@@ -75,18 +75,21 @@ public class PlayerController : MonoBehaviour
     {
         if ((rb.velocity.y < -6) && !anim.GetBool("IsFalling"))
         {
-            Debug.Log("transform.position.y = " + transform.position.y);
             anim.SetBool("IsFalling", true);
-           // anim.SetBool("IsMoving", false);
-            //anim.SetBool("IsJumping", false);
-            Debug.Log("begging of Falling!");
             transform.position = reinitPosition;
         }
         else if (anim.GetBool("IsFalling") && Physics.Raycast(transform.position, Vector3.down , 0.1f, layerGround))
         {
-            anim.SetBool("IsFalling", false);
-            Debug.Log("End of Falling!");
+            //anim.SetBool("IsFalling", false);
         }
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "StartingTrigger" && anim.GetBool("IsFalling"))
+        {
+            anim.SetBool("IsFalling", false);
+        }
     }
 }
