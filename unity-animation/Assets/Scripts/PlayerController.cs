@@ -52,25 +52,22 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (!anim.GetBool("IsFalling"))
+        Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Use GetAxisRaw
+
+        if (moveInput.magnitude > 0 &&  !anim.GetBool("IsFalling"))
         {
-            Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Use GetAxisRaw
+            Transform cameraTransform = Camera.main.transform;
+            Vector3 moveDirection = cameraTransform.right * moveInput.x + cameraTransform.forward * moveInput.z;
+            moveDirection.Normalize();
 
-            if (moveInput.magnitude > 0)
-            {
-                Transform cameraTransform = Camera.main.transform;
-                Vector3 moveDirection = cameraTransform.right * moveInput.x + cameraTransform.forward * moveInput.z;
-                moveDirection.Normalize();
+            rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
 
-                rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
-
-                anim.SetBool("IsMoving", true);
-            }
-            else
-            {
-                rb.velocity = new Vector3(0, rb.velocity.y, 0); // Stop horizontal movement when no input
-                anim.SetBool("IsMoving", false);
-            }
+            anim.SetBool("IsMoving", true);
+        }
+        else
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0); // Stop horizontal movement when no input
+            anim.SetBool("IsMoving", false);
         }
     }
 
@@ -80,8 +77,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("transform.position.y = " + transform.position.y);
             anim.SetBool("IsFalling", true);
-            anim.SetBool("IsMoving", false);
-            anim.SetBool("IsJumping", false);
+           // anim.SetBool("IsMoving", false);
+            //anim.SetBool("IsJumping", false);
             Debug.Log("begging of Falling!");
             transform.position = reinitPosition;
         }
