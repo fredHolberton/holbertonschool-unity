@@ -4685,8 +4685,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3475bf3eb9b096f4ab56f33b0a90502c, type: 3}
   m_PrefabInstance: {fileID: 651906258}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &651906260
-MeshCollider:
+--- !u!65 &651906260
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4700,13 +4700,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.79033524, y: 0.31115875, z: 1.0107222}
+  m_Center: {x: -0.00011638006, y: 0.11068976, z: -0.0053583146}
 --- !u!1 &663647854 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8678809658498735310, guid: 5932d0a3fd206f4469d5938d82c7a134, type: 3}
@@ -5061,7 +5060,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c40f093a8969f6c4aa18ad2ead0d41b9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1994991428}
+      addedObject: {fileID: 1994991431}
   m_SourcePrefab: {fileID: 100100000, guid: c40f093a8969f6c4aa18ad2ead0d41b9, type: 3}
 --- !u!4 &709124810 stripped
 Transform:
@@ -14364,8 +14363,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c40f093a8969f6c4aa18ad2ead0d41b9, type: 3}
   m_PrefabInstance: {fileID: 709124809}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1994991428
-MeshCollider:
+--- !u!65 &1994991431
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14379,13 +14378,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5709895401514035297, guid: c40f093a8969f6c4aa18ad2ead0d41b9, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 1.095458, y: 0.478962, z: 0.898982}
+  m_Center: {x: 0, y: 0.239481, z: 0}
 --- !u!1001 &1995587317
 PrefabInstance:
   m_ObjectHideFlags: 0

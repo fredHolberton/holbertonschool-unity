@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         if (saut && Physics.Raycast(transform.position, Vector3.down , 2f, layerGround))
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-            anim.SetTrigger("Jump");
+            anim.SetBool("IsJumping", true);
         }
     }
 
@@ -75,5 +75,16 @@ public class PlayerController : MonoBehaviour
             transform.position = reinitPosition;
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 6)
+        {
+            anim.SetBool("IsJumping", false);
+            Debug.Log("Fin du saut");
+        }
+    }
+
+
 
 }
