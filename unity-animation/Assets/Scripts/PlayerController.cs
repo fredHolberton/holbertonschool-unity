@@ -10,19 +10,18 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
     public LayerMask layerGround;
 
-    private float vertical;
-    private float horizontal;
     private Rigidbody rb;
     private Animator anim;
 
-    private float minAltitude = -30f;
+    private float minAltitude = -6f;
     private Vector3 reinitPosition;
+    private bool IsGrounded = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         reinitPosition = transform.position;
-        reinitPosition.y = -minAltitude;
+        reinitPosition.y = 60f;
         Time.timeScale = 1;
         anim = GetComponent<Animator>();
 
@@ -43,36 +42,54 @@ public class PlayerController : MonoBehaviour
         if (saut && Physics.Raycast(transform.position, Vector3.down , 2f, layerGround))
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-            anim.SetTrigger("Jump");
+            anim.SetBool("IsJumping", true);
+        }
+        else if (anim.GetBool("IsJumping") && Physics.Raycast(transform.position, Vector3.down , 0.1f, layerGround))
+        {
+            anim.SetBool("IsJumping", false);
         }
     }
 
     private void HandleMovement()
     {
-        Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Use GetAxisRaw
-
-        if (moveInput.magnitude > 0)
+        if (!anim.GetBool("IsFalling"))
         {
-            Transform cameraTransform = Camera.main.transform;
-            Vector3 moveDirection = cameraTransform.right * moveInput.x + cameraTransform.forward * moveInput.z;
-            moveDirection.Normalize();
+            Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Use GetAxisRaw
 
-            rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
+            if (moveInput.magnitude > 0)
+            {
+                Transform cameraTransform = Camera.main.transform;
+                Vector3 moveDirection = cameraTransform.right * moveInput.x + cameraTransform.forward * moveInput.z;
+                moveDirection.Normalize();
 
-            anim.SetBool("IsMoving", true);
-        }
-        else
-        {
-            rb.velocity = new Vector3(0, rb.velocity.y, 0); // Stop horizontal movement when no input
-            anim.SetBool("IsMoving", false);
+                rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
+
+                anim.SetBool("IsMoving", true);
+            }
+            else
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, 0); // Stop horizontal movement when no input
+                anim.SetBool("IsMoving", false);
+            }
         }
     }
 
     private void Falling()
     {
-        if (transform.position.y < minAltitude)
+        if ((transform.position.y < minAltitude) && !anim.GetBool("IsFalling"))
         {
+            Debug.Log("transform.position.y = " + transform.position.y);
+            anim.SetBool("IsFalling", true);
+            anim.SetBool("IsMoving", false);
+            anim.SetBool("IsJumping", false);
+            Debug.Log("begging of Falling!");
             transform.position = reinitPosition;
         }
+        else if (anim.GetBool("IsFalling") && Physics.Raycast(transform.position, Vector3.down , 0.1f, layerGround))
+        {
+            anim.SetBool("IsFalling", false);
+            Debug.Log("End of Falling!");
+        }
+
     }
 }
