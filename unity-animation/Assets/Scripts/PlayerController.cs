@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private float minAltitude = -6f;
     private Vector3 reinitPosition;
-    private bool IsGrounded = false;
+    private float rotationSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         reinitPosition.y = 60f;
         Time.timeScale = 1;
         anim = GetComponent<Animator>();
+        rotationSpeed = 4f;
 
     }
 
@@ -62,6 +63,15 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
 
+            // ROTATION
+            Vector3 desiredDirection = new Vector3(-rb.velocity.x, 0, -rb.velocity.z);
+
+            if (desiredDirection != Vector3.zero)
+            {
+                Quaternion rotation = Quaternion.LookRotation(desiredDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.02f * rotationSpeed);
+            }
+
             anim.SetBool("IsMoving", true);
         }
         else
@@ -78,18 +88,11 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("IsFalling", true);
             transform.position = reinitPosition;
         }
-        else if (anim.GetBool("IsFalling") && Physics.Raycast(transform.position, Vector3.down , 0.1f, layerGround))
-        {
-            //anim.SetBool("IsFalling", false);
-        }
-
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "StartingTrigger" && anim.GetBool("IsFalling"))
+        else if (anim.GetBool("IsFalling") && Physics.Raycast(transform.position, Vector3.down , 0.01f, layerGround))
         {
             anim.SetBool("IsFalling", false);
+            Debug.Log("J'ai touché le sol");
         }
+
     }
 }

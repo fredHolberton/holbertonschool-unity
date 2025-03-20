@@ -1395,7 +1395,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: -8679921383154817045}
-  - component: {fileID: 5866666021909216657}
   m_Layer: 0
   m_Name: ty
   m_TagString: Untagged
@@ -1420,27 +1419,6 @@ Transform:
   - {fileID: 3907933707221443690}
   m_Father: {fileID: 3154123626441997986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &5866666021909216657
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149155446097}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a29a4c3290eb1a74481938d08719e98e, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &925061620956295019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1690,7 @@ GameObject:
   - component: {fileID: 6294379232995625984}
   - component: {fileID: 4254047494052059925}
   - component: {fileID: 3082116594251793698}
-  - component: {fileID: 4126250999891908640}
+  - component: {fileID: 7794194099417059134}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1867,7 +1845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
   finalTime: {fileID: 0}
---- !u!95 &4126250999891908640
+--- !u!95 &7794194099417059134
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
