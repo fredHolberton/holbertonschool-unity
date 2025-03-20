@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             anim.SetBool("IsJumping", true);
         }
-        else if (anim.GetBool("IsJumping") && Physics.Raycast(transform.position, Vector3.down , 0.1f, layerGround))
+        else if (anim.GetBool("IsJumping") && Physics.Raycast(transform.position, Vector3.down , 0.05f, layerGround))
         {
             anim.SetBool("IsJumping", false);
         }
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void Falling()
     {
-        if ((rb.velocity.y < -6) && !anim.GetBool("IsFalling"))
+        if ((transform.position.y < minAltitude) && !anim.GetBool("IsFalling"))
         {
             anim.SetBool("IsFalling", true);
             transform.position = reinitPosition;
