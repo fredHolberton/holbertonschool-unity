@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("IsFalling", true);
             transform.position = reinitPosition;
         }
-        else if (anim.GetBool("IsFalling") && Physics.Raycast(transform.position, Vector3.down , 0.01f, layerGround))
+        else if (anim.GetBool("IsFalling") && Physics.Raycast(transform.position, Vector3.down , 0.05f, layerGround))
         {
             anim.SetBool("IsFalling", false);
             Debug.Log("J'ai touché le sol");
