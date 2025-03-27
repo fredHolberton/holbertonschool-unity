@@ -2,4 +2,8 @@
 ![image](https://github.com/user-attachments/assets/731492c1-e25b-4d04-9ce0-678ff0deba0b)
 
 ## Some of projects are finished and other are in progress
+I really enjoyed discovering the Unity engine through 2D and 3D games such as:
+- A clone of the famous Tetris
+- A maze game
+- A platform game
 
