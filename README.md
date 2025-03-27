@@ -7,3 +7,7 @@ I really enjoyed discovering the Unity engine through 2D and 3D games such as:
 - A maze game
 - A platform game
 
+About myself:
+- Frédéric Urbani
+- LikedIn : https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-urbani-16211759/
+
