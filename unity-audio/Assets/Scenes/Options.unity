@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0d9fc6519ba9544b48d2207d387f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invertYToggle: {fileID: 0}
+  invertYToggle: {fileID: 1358546035}
 --- !u!4 &1418356356
 Transform:
   m_ObjectHideFlags: 0
