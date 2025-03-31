@@ -9,13 +9,19 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jumpPower;
     public LayerMask layerGround;
+    public AudioClip grassSound;
+    public AudioClip rockSound;
 
     private Rigidbody rb;
     private Animator anim;
+    private AudioClip currentSound;
 
     private float minAltitude = -6f;
     private Vector3 reinitPosition;
     private float rotationSpeed;
+    private AudioSource audioSource;
+
+    private bool canMove;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +31,8 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
         anim = GetComponent<Animator>();
         rotationSpeed = 4f;
+        audioSource = GetComponent<AudioSource>();
+        canMove = true;
 
     }
 
@@ -40,14 +48,16 @@ public class PlayerController : MonoBehaviour
     {
         bool saut = Input.GetButtonDown("Jump");
 
-        if (saut && Physics.Raycast(transform.position, Vector3.down , 2f, layerGround))
+        if (saut && Physics.Raycast(transform.position, Vector3.down , 0.8f, layerGround) && canMove)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             anim.SetBool("IsJumping", true);
+            canMove = false;
         }
-        else if (anim.GetBool("IsJumping") && Physics.Raycast(transform.position, Vector3.down , 0.01f, layerGround))
+        else if (anim.GetBool("IsJumping") && Physics.Raycast(transform.position, Vector3.down , 0.08f, layerGround))
         {
             anim.SetBool("IsJumping", false);
+            canMove = true;
         }
     }
 
@@ -55,7 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Use GetAxisRaw
 
-        if (moveInput.magnitude > 0 &&  !anim.GetBool("IsFalling"))
+        if (moveInput.magnitude > 0 &&  canMove)
         {
             Transform cameraTransform = Camera.main.transform;
             Vector3 moveDirection = cameraTransform.right * moveInput.x + cameraTransform.forward * moveInput.z;
@@ -79,6 +89,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(0, rb.velocity.y, 0); // Stop horizontal movement when no input
             anim.SetBool("IsMoving", false);
         }
+        PlaySound();
     }
 
     private void Falling()
@@ -87,12 +98,57 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("IsFalling", true);
             transform.position = reinitPosition;
+            anim.SetBool("IsJumping", false);
+            anim.SetBool("IsMoving", false);
+            canMove = false;
         }
-        else if (anim.GetBool("IsFalling") && Physics.Raycast(transform.position, Vector3.down , 0.05f, layerGround))
+        else if (anim.GetBool("IsFalling") && Physics.Raycast(transform.position, Vector3.down , 0.1f, layerGround))
         {
             anim.SetBool("IsFalling", false);
-            Debug.Log("J'ai touché le sol");
         }
 
+    }
+
+    private void PlaySound()
+    {
+        if ((!anim.GetBool("IsFalling")) && (!anim.GetBool("IsJumping")) && anim.GetBool("IsMoving"))
+        {
+            if (audioSource.clip != currentSound)
+            {
+                audioSource.Stop();
+                audioSource.clip = currentSound;
+            }
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+                
+        }
+        else
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+    }
+
+    private void OnCollisionStay(Collision col)
+    {
+        switch (col.gameObject.tag)
+        {
+            case "Grass":
+                currentSound = grassSound;
+                break;
+
+            case "Rock":
+                currentSound = rockSound;
+                break;
+        }
+    }
+
+    public void EndFalling()
+    {
+        canMove = true;
     }
 }
