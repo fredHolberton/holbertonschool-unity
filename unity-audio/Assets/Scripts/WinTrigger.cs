@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class WinTrigger : MonoBehaviour
 {
+    public AudioController audioController;
     private Timer timer;
 
     private void Awake()
     {
         timer = GameObject.Find("Player").GetComponent<Timer>();
     }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    
-    }
-
     
     void OnTriggerEnter(Collider other)
     {
@@ -33,6 +21,7 @@ public class WinTrigger : MonoBehaviour
             other.gameObject.GetComponent<Timer>().enabled = false;
             GameObject.Find("WinCanvas").GetComponent<Canvas>().enabled = true;
             timer.Win();
+            audioController.StopBackgroundMusic();
 
         }
     }
