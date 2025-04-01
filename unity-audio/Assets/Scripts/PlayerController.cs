@@ -9,55 +9,56 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jumpPower;
     public LayerMask layerGround;
-    public AudioClip grassSound;
-    public AudioClip rockSound;
+    public AudioController audioController;
 
     private Rigidbody rb;
     private Animator anim;
-    private AudioClip currentSound;
+    private string currentSound;
 
     private float minAltitude = -6f;
     private Vector3 reinitPosition;
     private float rotationSpeed;
-    private AudioSource audioSource;
-
     private bool canMove;
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         reinitPosition = transform.position;
         reinitPosition.y = 60f;
         Time.timeScale = 1;
-        anim = GetComponent<Animator>();
         rotationSpeed = 4f;
-        audioSource = GetComponent<AudioSource>();
         canMove = true;
-
+        currentSound = "Grass";
     }
 
     // Update is called once per frame
     void Update()
     {
-        HandleJump();
         HandleMovement();
-        Falling();
+        HandleJump();
+        handleFalling();
+    }
+
+    private bool IsGrounded()
+    {
+        // set sphere position, with offset
+        /*Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - groundedOffset,
+            transform.position.z);
+        return Physics.CheckSphere(spherePosition, groundedRadius, layerGround,
+            QueryTriggerInteraction.Ignore);*/
+        return Physics.Raycast(transform.position, Vector3.down , 0.05f, layerGround);
     }
         
     private void HandleJump()
     {
-        bool saut = Input.GetButtonDown("Jump");
-
-        if (saut && Physics.Raycast(transform.position, Vector3.down , 0.8f, layerGround) && canMove)
+        bool jump = Input.GetButtonDown("Jump");
+        if (jump && Physics.Raycast(transform.position, Vector3.down , 2f, layerGround) && !anim.GetBool("IsJumping"))
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             anim.SetBool("IsJumping", true);
-            canMove = false;
-        }
-        else if (anim.GetBool("IsJumping") && Physics.Raycast(transform.position, Vector3.down , 0.08f, layerGround))
-        {
-            anim.SetBool("IsJumping", false);
-            canMove = true;
+            //canMove = false;
         }
     }
 
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Use GetAxisRaw
 
-        if (moveInput.magnitude > 0 &&  canMove)
+        if (moveInput.magnitude > 0 && canMove)
         {
             Transform cameraTransform = Camera.main.transform;
             Vector3 moveDirection = cameraTransform.right * moveInput.x + cameraTransform.forward * moveInput.z;
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
         PlaySound();
     }
 
-    private void Falling()
+    private void handleFalling()
     {
         if ((transform.position.y < minAltitude) && !anim.GetBool("IsFalling"))
         {
@@ -105,6 +106,8 @@ public class PlayerController : MonoBehaviour
         else if (anim.GetBool("IsFalling") && Physics.Raycast(transform.position, Vector3.down , 0.1f, layerGround))
         {
             anim.SetBool("IsFalling", false);
+            audioController.PlayLanding(0.4f);
+
         }
 
     }
@@ -113,42 +116,49 @@ public class PlayerController : MonoBehaviour
     {
         if ((!anim.GetBool("IsFalling")) && (!anim.GetBool("IsJumping")) && anim.GetBool("IsMoving"))
         {
-            if (audioSource.clip != currentSound)
-            {
-                audioSource.Stop();
-                audioSource.clip = currentSound;
-            }
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
+           audioController.PlayRunning(currentSound);
                 
         }
         else
         {
-            if (audioSource.isPlaying)
-            {
-                audioSource.Stop();
-            }
+            audioController.StopRunning();
         }
     }
 
-    private void OnCollisionStay(Collision col)
+    private void OnCollisionEnter(Collision col)
     {
-        switch (col.gameObject.tag)
+        if (anim != null)
         {
-            case "Grass":
-                currentSound = grassSound;
-                break;
+            switch (col.gameObject.tag)
+            {
+                case "Grass":
+                    currentSound = "Grass";
+                    anim.SetBool("IsJumping", false);
+                    break;
 
-            case "Rock":
-                currentSound = rockSound;
-                break;
+                case "Rock":
+                    currentSound = "Rock";
+                    anim.SetBool("IsJumping", false);
+                    break;
+            }
         }
+        
     }
 
     public void EndFalling()
     {
         canMove = true;
+    }
+
+    public void StopJumping()
+    {
+        if (anim != null)
+        {
+            anim.SetBool("IsJumping", false);
+            canMove = true;
+            audioController.PlayJumping(currentSound, 0.2f);
+            
+        }
+        
     }
 }

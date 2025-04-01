@@ -15,7 +15,6 @@ public class CameraController : MonoBehaviour
     private bool isMousePressed = false; // Pour savoir si la souris est cliquée
     private Vector3 offset;        // Décalage entre la caméra et l'objet
 
-    RaycastHit hit = new RaycastHit();
 
     void Start()
     {

@@ -1831,6 +1831,11 @@ MonoBehaviour:
   layerGround:
     serializedVersion: 2
     m_Bits: 64
+  grassSound: {fileID: 0}
+  rockSound: {fileID: 0}
+  grassSplashSound: {fileID: 0}
+  audioSource1: {fileID: 0}
+  audioSource2: {fileID: 0}
 --- !u!114 &3082116594251793698
 MonoBehaviour:
   m_ObjectHideFlags: 0
