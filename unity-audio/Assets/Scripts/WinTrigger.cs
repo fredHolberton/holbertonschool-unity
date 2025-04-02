@@ -22,6 +22,7 @@ public class WinTrigger : MonoBehaviour
             GameObject.Find("WinCanvas").GetComponent<Canvas>().enabled = true;
             timer.Win();
             audioController.StopBackgroundMusic();
+            audioController.PlayVictoryMusic();
 
         }
     }
