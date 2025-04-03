@@ -47,9 +47,7 @@ public class MainMenu : MonoBehaviour
         audioMixer.SetFloat("BGMVolume", volume);
 
         volume = Mathf.Log10(Mathf.Clamp(GameplayController.SFXSlider, 0.0001f, 1f)) * 20f;
-        audioMixer.SetFloat("RunningVolume", volume);
-        audioMixer.SetFloat("LandingVolume", volume);
-        audioMixer.SetFloat("AmbianceVolume", volume); 
+        audioMixer.SetFloat("SFXVolume", volume);
     }
 
     public void LevelSelect(int level)

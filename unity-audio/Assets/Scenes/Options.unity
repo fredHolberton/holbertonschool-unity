@@ -344,6 +344,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wallpaper
       objectReference: {fileID: 0}
+    - target: {fileID: 9022341332029680308, guid: c3a4c2cffa65fa54cbe86af8337df185, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022341332029680308, guid: c3a4c2cffa65fa54cbe86af8337df185, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4781040073544105168, guid: 4f8935ac1b2900b49b5d6e620a6b4b08, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

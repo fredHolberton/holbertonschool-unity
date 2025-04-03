@@ -34,10 +34,10 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        paused.TransitionTo(0.01f);
         gameObject.GetComponent<Canvas>().enabled = true;
         Time.timeScale = 0;
         isOnPause = true;
-        paused.TransitionTo(0.01f);
     }
 
     public void Resume()
@@ -50,20 +50,23 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
         unpaused.TransitionTo(0.01f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
         unpaused.TransitionTo(0.01f);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void Options()
     {
+        Time.timeScale = 1;
+        unpaused.TransitionTo(0.01f);
         GameplayController.previousSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("Options");
-        unpaused.TransitionTo(0.01f);
     }
 }

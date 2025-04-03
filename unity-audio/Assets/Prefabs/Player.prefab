@@ -1691,6 +1691,7 @@ GameObject:
   - component: {fileID: 4254047494052059925}
   - component: {fileID: 3082116594251793698}
   - component: {fileID: 7794194099417059134}
+  - component: {fileID: 2088763762610770269}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1831,11 +1832,7 @@ MonoBehaviour:
   layerGround:
     serializedVersion: 2
     m_Bits: 64
-  grassSound: {fileID: 0}
-  rockSound: {fileID: 0}
-  grassSplashSound: {fileID: 0}
-  audioSource1: {fileID: 0}
-  audioSource2: {fileID: 0}
+  audioController: {fileID: 4339972717187225059, guid: 9c71b9094e8ef78478c8118d770a1f53, type: 3}
 --- !u!114 &3082116594251793698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,6 +1868,14 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!81 &2088763762610770269
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135793690982096073}
+  m_Enabled: 1
 --- !u!1 &3913607515164670958
 GameObject:
   m_ObjectHideFlags: 0

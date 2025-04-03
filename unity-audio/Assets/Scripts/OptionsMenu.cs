@@ -37,17 +37,13 @@ public class OptionsMenu : MonoBehaviour
 
     public void HandleBGMSliderValueChanged()
     {
-        Debug.Log("value = " + BGMSlider.value);
         float volume = Mathf.Log10(Mathf.Clamp(BGMSlider.value, 0.0001f, 1f)) * 20f;
-        Debug.Log("volume = " + volume + " Db");
         audioMixer.SetFloat("BGMVolume", volume);
     }
     
     public void HandleSFXSliderValueChanged()
     {
         float volume = Mathf.Log10(Mathf.Clamp(SFXSlider.value, 0.0001f, 1f)) * 20f;
-        audioMixer.SetFloat("RunningVolume", volume);
-        audioMixer.SetFloat("LandingVolume", volume);
-        audioMixer.SetFloat("AmbianceVolume", volume);
+        audioMixer.SetFloat("SFXVolume", volume);
     }
 }
