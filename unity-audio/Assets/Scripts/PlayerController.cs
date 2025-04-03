@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     private void HandleJump()
     {
         bool jump = Input.GetButtonDown("Jump");
-        if (jump && Physics.Raycast(transform.position, Vector3.down , 2f, layerGround) && !anim.GetBool("IsJumping"))
+        if (jump && !anim.GetBool("IsJumping") && canMove)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             anim.SetBool("IsJumping", true);
