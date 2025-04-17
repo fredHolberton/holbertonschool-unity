@@ -29,12 +29,12 @@ public class BusinessCardController : MonoBehaviour
     // function called every frame per second
     void Update()
     {
-        if (Input.touchCount == 1)
+        /*if (Input.GetMouseButtonDown(0))
         {
             OnMouseEnter();
             OnMouseDown();
             OnMouseExit();
-        }
+        }*/
     }
 
     /// <summary>

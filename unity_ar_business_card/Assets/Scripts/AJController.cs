@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class AJController : MonoBehaviour
 {
+    
+    private GameObject imageTarget;
     // Start is called before the first frame update
     void Start()
     {
-         transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, 0f);
+         imageTarget = GameObject.Find("ImageTarget").gameObject;
     }
 
     // Update is called once per frame
@@ -15,4 +17,10 @@ public class AJController : MonoBehaviour
     {
        
     }
+
+    public void OnStart()
+    {
+        transform.position = imageTarget.transform.position;
+    }
+
 }
