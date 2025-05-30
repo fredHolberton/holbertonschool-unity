@@ -1,0 +1,2 @@
+C:\Fred\Holberton\holbertonschool-unity\unity-ar_slingshot_game\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Fred\Holberton\holbertonschool-unity\unity-ar_slingshot_game\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
