@@ -4,99 +4,112 @@ using UnityEngine.XR.ARFoundation;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.XR.ARSubsystems;
 
 public class ARPlaneController : MonoBehaviour
 {
+    //public static GameObject selectedPlane = null;
+    public static ARPlane selectedPlane = null;
+
     [SerializeField] private TextMeshProUGUI searchPlaneText = null;
 
-    public static ARPlane selectedARPlane = null;
-    public Camera arCamera;
-    public ARRaycastManager raycastManager;
+    [SerializeField] private GameObject startButton = null;
+
+    [SerializeField] private Material selectedPlaneMaterial;
+    
 
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private ARPlaneManager arPlaneManager = null;
-
-    private bool isFound;
+    private ARRaycastManager raycastManager;
+    private bool firstPlaneTracked = false;
     private Touchscreen touchScreen;
+    private bool planeSelected = false;
 
     // fonction appelée au lancement du script
     void Start()
     {
         arPlaneManager = GetComponent<ARPlaneManager>();
-        isFound = false;
+        raycastManager = GetComponent<ARRaycastManager>();
+        firstPlaneTracked = false;
     }
 
     void Update()
     {
-
-
-        /*if (Input.touchCount > 0)
+        if (planeSelected)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                if (raycastManager.Raycast(touch.position, hits))
-                {
-                    searchPlaneText.text = string.Format("{0}", hits[0].trackableId);
-                    HandleRaycastHit(hits[0]);
-                }
-            }
-        }*/
+            return;  
+        }
+
         touchScreen = Touchscreen.current;
         TouchControl touch = touchScreen.primaryTouch;
         if (touch.press.wasPressedThisFrame)
         {
             Vector2 touchPos = touch.position.ReadValue();
-            if (raycastManager.Raycast(touchPos, hits))
+            if (raycastManager.Raycast(touchPos, hits, TrackableType.PlaneWithinPolygon))
             {
-                searchPlaneText.text = string.Format("{0}", hits[0].trackableId);
                 HandleRaycastHit(hits[0]);
             }
         }
     }
 
-    public void OnTrackablesChanged(ARTrackablesChangedEventArgs<ARPlane> changes)
-    {
-        if (!isFound)
-        {
-            searchPlaneText.text = "SELECT A PLANE";
-            isFound = true;
-        }
-
-        /*foreach (ARPlane plane in changes.added)
-        {
-            plane.gameObject.AddComponent<ARAnchor>();
-        }*/
-
-    }
-
-
     void HandleRaycastHit(ARRaycastHit hit)
     {
-        searchPlaneText.text = string.Format("HandleRaycastHit");
-        //if (hit.trackable is ARPlane)
-        //{
-            selectedARPlane = arPlaneManager.GetPlane(hits[0].trackableId);
-            selectedARPlane.gameObject.AddComponent<ARAnchor>();
-            searchPlaneText.text = string.Format("InstanceID: {0}", selectedARPlane.GetInstanceID());
-            DisableOtherARPlane(selectedARPlane);
-        //}
+        selectedPlane = arPlaneManager.GetPlane(hits[0].trackableId);
+        planeSelected = true;
+
+        DisableOtherARPlane(selectedPlane);
+
+        if (selectedPlane.TryGetComponent<MeshRenderer>(out var meshRenderer))
+        {
+            meshRenderer.material = selectedPlaneMaterial;
+        }
+
+        startButton.SetActive(true);
+        searchPlaneText.text = "PLANE SELECTED !";
     }
 
-    void DisableOtherARPlane(ARPlane selectedPlane)
+    void DisableOtherARPlane(ARPlane selectedARPlane)
     {
-        if (selectedPlane != null)
+        if (selectedARPlane != null)
         {
             foreach (ARPlane plane in arPlaneManager.trackables)
             {
-                if (plane.GetInstanceID() != selectedPlane.GetInstanceID())
+                if (plane.trackableId != selectedARPlane.trackableId)
                 {
                     plane.gameObject.SetActive(false);
                 }
             }
 
-            searchPlaneText.text = "PLANE SELECTED !";
             arPlaneManager.enabled = false;
+        }
+    }
+
+    void DisableAllARPlane(ARPlane selectedARPlane)
+    {
+        if (selectedARPlane != null)
+        {
+            foreach (ARPlane plane in arPlaneManager.trackables)
+            {
+                var meshRenderer = plane.GetComponent<MeshRenderer>();
+                if (meshRenderer != null) meshRenderer.enabled = false;
+
+                var meshVis = plane.GetComponent<ARPlaneMeshVisualizer>();
+                if (meshVis != null) meshVis.enabled = false;
+
+                var arPlane = plane.GetComponent<ARPlane>();
+                if (arPlane != null) arPlane.enabled = false; else arPlane.enabled = true;
+            }
+
+            arPlaneManager.enabled = false;
+        }
+    }
+
+    public void OnTrackablesChanged(ARTrackablesChangedEventArgs<ARPlane> changes)
+    {
+        if (!firstPlaneTracked)
+        {
+            searchPlaneText.text = "SELECT A PLANE";
+            firstPlaneTracked = true;
         }
     }
 }
