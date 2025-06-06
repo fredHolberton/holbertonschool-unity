@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -5,17 +6,21 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UIElements;
+using Unity.AI.Navigation;
 
 public class ARPlaneController : MonoBehaviour
 {
-    //public static GameObject selectedPlane = null;
-    public static ARPlane selectedPlane = null;
+    [SerializeField] private GameObject selectedPlane = null;
 
     [SerializeField] private TextMeshProUGUI searchPlaneText = null;
 
     [SerializeField] private GameObject startButton = null;
 
     [SerializeField] private Material selectedPlaneMaterial;
+
+    [SerializeField] private GameObject spawnZone;
+
     
 
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -54,53 +59,46 @@ public class ARPlaneController : MonoBehaviour
 
     void HandleRaycastHit(ARRaycastHit hit)
     {
-        selectedPlane = arPlaneManager.GetPlane(hits[0].trackableId);
+        ClonerSelectedPlane(arPlaneManager.GetPlane(hits[0].trackableId));
+
+        DisableAllARPlane();
+        arPlaneManager.enabled = false;
         planeSelected = true;
-
-        DisableOtherARPlane(selectedPlane);
-
-        if (selectedPlane.TryGetComponent<MeshRenderer>(out var meshRenderer))
-        {
-            meshRenderer.material = selectedPlaneMaterial;
-        }
 
         startButton.SetActive(true);
         searchPlaneText.text = "PLANE SELECTED !";
+
+        // Set the selected plane static, build a navmesh data into it and activate it
+        if (!selectedPlane.activeSelf) selectedPlane.SetActive(true);
+        
+        // activate the spawnZone
+        spawnZone.SetActive(true);
     }
 
-    void DisableOtherARPlane(ARPlane selectedARPlane)
+    void ClonerSelectedPlane(ARPlane selectedARPlane)
     {
-        if (selectedARPlane != null)
-        {
-            foreach (ARPlane plane in arPlaneManager.trackables)
-            {
-                if (plane.trackableId != selectedARPlane.trackableId)
-                {
-                    plane.gameObject.SetActive(false);
-                }
-            }
+        Mesh clonedMesh = Instantiate(selectedARPlane.GetComponent<MeshFilter>().mesh);
+        selectedPlane.GetComponent<MeshFilter>().mesh = clonedMesh;
+        selectedPlane.GetComponent<MeshCollider>().sharedMesh = clonedMesh;
 
-            arPlaneManager.enabled = false;
-        }
+        // Apply position / rotation / scale
+        selectedPlane.transform.position = selectedARPlane.transform.position;
+        selectedPlane.transform.rotation = selectedARPlane.transform.rotation;
+        selectedPlane.transform.localScale = selectedARPlane.transform.localScale;
     }
 
-    void DisableAllARPlane(ARPlane selectedARPlane)
+    void DisableAllARPlane()
     {
-        if (selectedARPlane != null)
+        foreach (ARPlane plane in arPlaneManager.trackables)
         {
-            foreach (ARPlane plane in arPlaneManager.trackables)
-            {
-                var meshRenderer = plane.GetComponent<MeshRenderer>();
-                if (meshRenderer != null) meshRenderer.enabled = false;
+            var meshRenderer = plane.GetComponent<MeshRenderer>();
+            if (meshRenderer != null) meshRenderer.enabled = false;
 
-                var meshVis = plane.GetComponent<ARPlaneMeshVisualizer>();
-                if (meshVis != null) meshVis.enabled = false;
+            var meshVis = plane.GetComponent<ARPlaneMeshVisualizer>();
+            if (meshVis != null) meshVis.enabled = false;
 
-                var arPlane = plane.GetComponent<ARPlane>();
-                if (arPlane != null) arPlane.enabled = false; else arPlane.enabled = true;
-            }
-
-            arPlaneManager.enabled = false;
+            var arPlane = plane.GetComponent<ARPlane>();
+            if (arPlane != null) arPlane.enabled = false; else arPlane.enabled = true;
         }
     }
 
