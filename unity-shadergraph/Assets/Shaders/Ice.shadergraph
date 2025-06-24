@@ -766,10 +766,10 @@
     "m_Guid": {
         "m_GuidSerialized": "218e9a8d-4af7-4bbd-b1e5-aae2de775947"
     },
-    "m_Name": "Ice Color",
+    "m_Name": "Base Color",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Ice Color",
-    "m_DefaultReferenceName": "_Ice_Color",
+    "m_RefNameGeneratedByDisplayName": "Base Color",
+    "m_DefaultReferenceName": "_Base_Color",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1431,7 +1431,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "68819980450c4dd29a7277fbdde23184",
     "m_Id": 0,
-    "m_DisplayName": "Ice Color",
+    "m_DisplayName": "Base Color",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2508,6 +2508,9 @@
     "m_Name": "",
     "m_ChildObjectList": [
         {
+            "m_Id": "2b989e28c48f4946afabd1f7151e1af8"
+        },
+        {
             "m_Id": "2944e25a211b4a408d1cfd3824e326fc"
         },
         {
@@ -2518,9 +2521,6 @@
         },
         {
             "m_Id": "b42e63618f174dbbbc3f22d1dafda022"
-        },
-        {
-            "m_Id": "2b989e28c48f4946afabd1f7151e1af8"
         }
     ]
 }
