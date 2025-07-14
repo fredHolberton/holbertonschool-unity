@@ -12,7 +12,7 @@ public class LookAround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMouseOffScreen())
+        /*if (!isMouseOffScreen())
         {
             rotationX -= Input.GetAxis("Mouse Y") * sensitivity;
             rotationY -= Input.GetAxis("Mouse X") * sensitivity;
@@ -20,14 +20,14 @@ public class LookAround : MonoBehaviour
             rotationX = Mathf.Clamp(rotationX, -90, 90);
 
             transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
-        }
+        }*/
         
-        /*if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             // Camera movement
-            transform.RotateAround(transform.position, -Vector3.up, speed * Input.GetAxis("Mouse X"));
-            transform.RotateAround(transform.position, transform.right, speed * Input.GetAxis("Mouse Y"));
-        }*/
+            transform.RotateAround(transform.position, -Vector3.up, sensitivity * Input.GetAxis("Mouse X"));
+            transform.RotateAround(transform.position, transform.right, sensitivity * Input.GetAxis("Mouse Y"));
+        }
     }
 
     private bool isMouseOffScreen()
