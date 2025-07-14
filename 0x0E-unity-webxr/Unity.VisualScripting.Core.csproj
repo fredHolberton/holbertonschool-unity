@@ -416,8 +416,8 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Core\Serialization\DoNotSerializeAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Core\Cloning\ICloner.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Core\Utilities\StringUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Core\Variables\InspectorVariableNameAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Core\SerializedProperties\SerializedPropertyProviderAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Core\Variables\InspectorVariableNameAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Core\Listeners\MonoBehaviour\UnityOnMouseDragMessageListener.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Core\Utilities\UnityObjectUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Core\Dependencies\FullSerializer\fsConverterRegistrar.cs" />

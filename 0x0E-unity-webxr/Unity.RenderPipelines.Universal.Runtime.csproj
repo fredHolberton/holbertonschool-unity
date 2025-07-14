@@ -94,8 +94,8 @@
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\RendererFeatures\ScreenSpaceAmbientOcclusion.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\History\TaaHistory.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\FrameData\UniversalPostProcessingData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\Overrides\Bloom.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\FrameData\UniversalShadowData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\Overrides\Bloom.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\Debug\DebugDisplaySettingsRendering.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\SupportedOnRenderer.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\UniversalRenderer.cs" />
@@ -120,8 +120,8 @@
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\Tiling\TileRangeExpansionJob.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\TemporalAA.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\VFXGraph\Utility\PropertyBinders\URPCameraBinder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\RenderPipelineResources\UniversalRenderPipelineEditorMaterials.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\Decal\Entities\DecalUpdateCachedSystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\RenderPipelineResources\UniversalRenderPipelineEditorMaterials.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\Overrides\Vignette.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\FrameData\Universal2DResourceData.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@fd2e729c5297\Runtime\ShaderUtils.cs" />

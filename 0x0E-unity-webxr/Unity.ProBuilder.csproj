@@ -107,8 +107,8 @@
     <Compile Include="Library\PackageCache\com.unity.probuilder@b55f3ad2afd2\Runtime\Core\BuiltinMaterials.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@b55f3ad2afd2\Runtime\Core\SerializationUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@b55f3ad2afd2\Runtime\MeshOperations\VertexEditing.cs" />
-    <Compile Include="Library\PackageCache\com.unity.probuilder@b55f3ad2afd2\Runtime\Core\VectorHash.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@b55f3ad2afd2\Runtime\MeshOperations\MeshImporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.probuilder@b55f3ad2afd2\Runtime\Core\VectorHash.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@b55f3ad2afd2\Runtime\Core\MeshUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@b55f3ad2afd2\Runtime\MeshOperations\ConnectElements.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@b55f3ad2afd2\Runtime\Core\SimpleTuple.cs" />

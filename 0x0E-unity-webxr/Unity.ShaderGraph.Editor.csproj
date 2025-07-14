@@ -201,8 +201,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Legacy\Edge0.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Drawing\ViewModels\InspectorViewModel.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Drawing\Manipulators\Scrollable.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\Math\Round\RoundNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Legacy\PBRMasterNode1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\Math\Round\RoundNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Generation\Enumerations\KeywordScope.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Generation\Processors\ShaderSpliceUtil.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\FunctionMultiInput.cs" />
@@ -666,8 +666,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Generation\Targets\BuiltIn\Editor\ShaderGraph\Targets\BuiltInCanvasSubTarget.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Interfaces\IMayRequireTransform.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\Math\Vector\ReflectionNode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Legacy\SpriteUnlitMasterNode1.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\Input\PropertyNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Legacy\SpriteUnlitMasterNode1.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\Channel\FlipNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Drawing\Inspector\PropertyDrawers\PositionNodePropertyDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\Input\Scene\ScreenNode.cs" />
@@ -684,8 +684,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Graphs\BooleanShaderProperty.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\Input\Gradient\SampleGradientNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Generation\Targets\Fullscreen\FullscreenMetaData.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Util\FunctionRegistry.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\Input\Geometry\TangentVectorNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Util\FunctionRegistry.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Graphs\TangentMaterialSlot.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Nodes\Math\Interpolation\InverseLerpNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@3b066f00f1c5\Editor\Data\Attributes\SGPropertyDrawerAttribute.cs" />
