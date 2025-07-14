@@ -51,6 +51,7 @@
     <Compile Include="Assets\Scripts\RotatingSawController.cs" />
     <Compile Include="Assets\SpereController1.cs" />
     <Compile Include="Assets\SpereController.cs" />
+    <Compile Include="Assets\Scripts\SpeedBoostTrigger.cs" />
     <Compile Include="Assets\Scripts\LookAround.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\BallController.cs" />
