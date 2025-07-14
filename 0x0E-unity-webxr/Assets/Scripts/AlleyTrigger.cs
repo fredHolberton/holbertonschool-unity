@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AlleyTriggerController : MonoBehaviour
+public class AlleyTrigger : MonoBehaviour
 {
     [SerializeField] private GameController gameController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
