@@ -50,7 +50,10 @@ public class GameController : MonoBehaviour
         float ry = 0f;
         float rz = UnityEngine.Random.Range(minZ, maxZ);
         Vector3 moveTo = new Vector3(rx, ry, rz);
+        Debug.Log(string.Format("rx={0}  ry={1}  rz={2}", rx, ry, rz));
         spawnedObstacles[i] = Instantiate(obstaclePrefab, moveTo, obstaclePrefab.gameObject.transform.rotation, obstacleGroup.transform);
+         Debug.Log(string.Format("Obstaclex={0}  Obstacley={1}  Obstaclez={2}", spawnedObstacles[i].transform.position.x, spawnedObstacles[i].transform.position.y, spawnedObstacles[i].transform.position.z));
+        spawnedObstacles[i].transform.position = new Vector3(spawnedObstacles[i].transform.position.x, 0.104f, spawnedObstacles[i].transform.position.z);
     }
 
     public void IncrementScore()

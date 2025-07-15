@@ -50,12 +50,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\RotatingSawController.cs" />
-    <Compile Include="Assets\Scripts\AlleyTrigger.cs" />
+    <Compile Include="Assets\Scripts\BallsController.cs" />
+    <Compile Include="Assets\Scripts\XRZoomController.cs" />
     <Compile Include="Assets\Scripts\SpeedBoostTrigger.cs" />
     <Compile Include="Assets\Scripts\LookAround.cs" />
     <Compile Include="Assets\Scripts\LineTrigger.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\BallController.cs" />
+    <Compile Include="Assets\Scripts\BallTrigger.cs" />
+    <Compile Include="Assets\Scripts\PinSoundControllert.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

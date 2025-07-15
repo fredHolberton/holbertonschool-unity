@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LookAround : MonoBehaviour
 {
@@ -6,8 +7,6 @@ public class LookAround : MonoBehaviour
     /// Speed of the rotation.
     /// </summary>
     private float sensitivity = 3f;
-    private float rotationX;
-    private float rotationY;
 
     // Update is called once per frame
     void Update()
@@ -26,7 +25,7 @@ public class LookAround : MonoBehaviour
         {
             // Camera movement
             transform.RotateAround(transform.position, -Vector3.up, sensitivity * Input.GetAxis("Mouse X"));
-            transform.RotateAround(transform.position, transform.right, sensitivity * Input.GetAxis("Mouse Y"));
+            //transform.RotateAround(transform.position, transform.right, sensitivity * Input.GetAxis("Mouse Y"));
         }
     }
 
