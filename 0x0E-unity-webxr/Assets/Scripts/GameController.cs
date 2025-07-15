@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -7,11 +8,14 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject obstaclePrefab;
     [SerializeField] private GameObject obstacleGroup;
 
+    [SerializeField] private TextMeshProUGUI scoreText = null;
+
     private Bounds bndFloor;
     private GameObject[] spawnedObstacles;
 
     private float minZ;
     private float maxZ;
+    private int score = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,6 +24,7 @@ public class GameController : MonoBehaviour
         minZ = bndFloor.min.z + ((bndFloor.max.z - bndFloor.min.z) / 4f);
         maxZ = bndFloor.max.z - ((bndFloor.max.z - bndFloor.min.z) / 4f);
         spawnedObstacles = new GameObject[nbSpawnedObstacle];
+        scoreText.text = string.Format("{0}", score);
     }
 
     // Update is called once per frame
@@ -34,7 +39,7 @@ public class GameController : MonoBehaviour
         {
             if (spawnedObstacles[i] != null)
                 Destroy(spawnedObstacles[i]);
-            
+
             SpawnObstacleToRandomDestination(i);
         }
     }
@@ -46,5 +51,11 @@ public class GameController : MonoBehaviour
         float rz = UnityEngine.Random.Range(minZ, maxZ);
         Vector3 moveTo = new Vector3(rx, ry, rz);
         spawnedObstacles[i] = Instantiate(obstaclePrefab, moveTo, obstaclePrefab.gameObject.transform.rotation, obstacleGroup.transform);
+    }
+
+    public void IncrementScore()
+    {
+        score += 1;
+        scoreText.text = string.Format("{0}", score);
     }
 }

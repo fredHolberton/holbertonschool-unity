@@ -16,13 +16,15 @@ public class BallController : MonoBehaviour
 
     [SerializeField] private GameObject alleyFloor;
 
+    [SerializeField] private GameObject firstBall;
+
     private GameObject bowlingBall;
     private Vector2 _mouseCursor;
     private bool aBallIsMoving = false;
     private bool aBallIsGrabbed = false;
     private Bounds bndFloor;
-
     private Vector2 direction = Vector2.zero;
+    private Vector3 firstBallposition;
 
     private void OnEnable()
     {
@@ -60,7 +62,7 @@ public class BallController : MonoBehaviour
                     aBallIsGrabbed = true;
                     aBallIsMoving = false;
                 }
-                
+
             }
 
         }
@@ -72,9 +74,9 @@ public class BallController : MonoBehaviour
         {
             aBallIsGrabbed = false;
             aBallIsMoving = true;
-            bowlingBall.GetComponent<Rigidbody>().AddForce(new Vector3(0,0,1) * ballStrength);
+            bowlingBall.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * ballStrength);
         }
-        
+
     }
 
     private void LateralMovePerformed(InputAction.CallbackContext context)
@@ -91,6 +93,7 @@ public class BallController : MonoBehaviour
     void Start()
     {
         bndFloor = alleyFloor.GetComponent<Renderer>().bounds;
+        firstBallposition = firstBall.transform.position;
     }
 
     // Update is called once per frame
@@ -116,7 +119,12 @@ public class BallController : MonoBehaviour
                 ballPos = new Vector3(x, bowlingBall.transform.position.y, bowlingBall.transform.position.z);
                 bowlingBall.transform.position = ballPos;
             }
-                     
+            else if (aBallIsMoving && (bowlingBall.transform.position.z > bndFloor.max.z || bowlingBall.transform.position.z < bndFloor.min.z))
+            {
+                aBallIsMoving = false;
+                bowlingBall.transform.position = firstBallposition;
+            }
+
         }
     }
 }
